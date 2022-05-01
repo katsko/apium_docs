@@ -24,7 +24,7 @@ Create RPC method
 
 Each method must be in path: api/<method_name>/method.py
 
-Create file *api/hello/method.py*:
+Create file *api/get_hello_msg/method.py*:
 
 .. code-block:: python
 
@@ -32,7 +32,7 @@ Create file *api/hello/method.py*:
     from apium import af
 
 
-    class Hello(apium.Method):
+    class GetHelloMsg(apium.Method):
         name = af.Str(required=True)
         age = af.Int(default=18)
 
@@ -86,7 +86,7 @@ JSON:
     {
         "jsonrpc":"2.0",
         "id": 1,
-        "method": "hello",
+        "method": "get_hello_msg",
         "params": {
             "name": "John"
         }
@@ -99,7 +99,7 @@ Send request:
     curl http://127.0.0.1:8080/api/ \
         -X POST \
         -H 'Content-Type: application/json' \
-        -d '{"jsonrpc": "2.0", "id": 1, "method": "hello", "params": {"name": "John"}}'
+        -d '{"jsonrpc": "2.0", "id": 1, "method": "get_hello_msg", "params": {"name": "John"}}'
 
 Response:
 
@@ -117,7 +117,7 @@ JSON:
     {
         "jsonrpc":"2.0",
         "id": 1,
-        "method": "hello",
+        "method": "get_hello_msg",
         "params": {
             "name": "Smith",
             "age": 20
@@ -131,7 +131,7 @@ Send request:
     curl http://127.0.0.1:8080/api/ \
         -X POST \
         -H 'Content-Type: application/json' \
-        -d '{"jsonrpc": "2.0", "id": 1, "method": "hello", "params": {"name": "Smith", "age": 20}}'
+        -d '{"jsonrpc": "2.0", "id": 1, "method": "get_hello_msg", "params": {"name": "Smith", "age": 20}}'
 
 Response:
 
